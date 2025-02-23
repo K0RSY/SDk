@@ -2,7 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    Engine engine;
-    engine.print();
+    Engine::init();
+    Engine::run_resource_method("world", "entities", "test:random_entity", "tick");
     return 0;
 }
