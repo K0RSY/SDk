@@ -3,7 +3,9 @@
 #include <filesystem>
 #include <lua5.3/lua.hpp>
 #include <LuaBridge/LuaBridge.h>
-#include "tools.hpp"
+#include "utils.cpp"
+
+#pragma once
 
 using namespace std;
 using namespace luabridge;
@@ -43,22 +45,10 @@ public:
     static inline vector<string> loaded_entities;
     static inline lua_State* L = luaL_newstate();
 
-    // Temp funcions
-    static inline void print()
-    {
-        for (auto i: addons)
-            cout << i << ' ';
-        cout << endl;
-        
-        for (auto i: loaded_entities)
-            cout << i << ' ';
-        cout << endl;
-    }
-
     // Lua methods call
     static inline void run_resource_method(string category, string type, string resource, string method)
     {   
-        vector<string> splitted_resource = Tools::split_string(resource, ':');
+        vector<string> splitted_resource = Utils::split_string(resource, ':');
         string path = "./addons/" + splitted_resource[0] + "/" + category + "/" + type + "/" + splitted_resource[1] + "/" + method + ".lua";
         luaL_dofile(L, path.c_str());
     }
@@ -71,7 +61,6 @@ public:
         // Expose functions to lua
         getGlobalNamespace(L)
             .beginNamespace("engine")
-                .addFunction("print", print)
             .endNamespace();
         
         lua_pcall(L, 0, 0, 0);

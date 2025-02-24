@@ -11,7 +11,7 @@ main: $(compile_file)
 
 run:
 	@make
-	@echo "\n------------------run------------------"
+	@echo "\nRunning programm..."
 	@./$(run_file)
-	@echo "---------------------------------------\n"
+	@echo "Programm finished\n"
 	@make clean

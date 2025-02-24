@@ -2,9 +2,11 @@
 #include <vector>
 #include <filesystem>
 
+#pragma once
+
 using namespace std;
 
-class Tools
+class Utils
 {
 public:
     static inline vector<string> split_string(string str, char symbol)
