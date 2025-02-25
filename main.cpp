@@ -6,6 +6,6 @@ int main(int argc, char const *argv[])
     Engine::init();
     World::init();
 
-    Engine::run_resource_method("world", "entities", "test:random_entity", "tick");
+    Engine::run_entity_method("test:random_entity", "tick");
     return 0;
 }
