@@ -1,7 +1,9 @@
+.PHONY: clean all main run
+
 compile_file = main.cpp
 run_file = main
 
-all: $(run_file)
+all: main
 
 clean:
 	@rm $(run_file)
